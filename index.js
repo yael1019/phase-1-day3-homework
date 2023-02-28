@@ -59,19 +59,40 @@ const catName = document.getElementById("cat-name")
 const catImage = document.getElementById("cat-image")
 const catBreed = document.getElementById("cat-breed")
 
-catForm.addEventListener("submit", (e)=>{
-e.preventDefault()
-fetch("http://localhost:3000/cats", {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-    "name": catName.value,
-    "image": catImage.value,
-    "breed": catBreed.value
+// catForm.addEventListener("submit", (e)=>{
+// e.preventDefault()
+// fetch("http://localhost:3000/cats", {
+//     method: 'POST',
+//     headers: {
+//         'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({
+//     "name": catName.value,
+//     "image": catImage.value,
+//     "breed": catBreed.value
+//     })
+// })
+// .then(response => response.json())
+// .then(data => console.log(data))
+// })
+
+
+catForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    fetch('http://localhost:3000/cats', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "name": catName.value,
+            "image": catImage.value,
+            "breed": catBreed.value
+        })
     })
+    .then(response => response.json())
+    .then(data => console.log(data));
 })
-.then(response => response.json())
-.then(data => console.log(data))
-})
+
+
